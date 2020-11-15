@@ -15,7 +15,7 @@ var stones;
 var score = 0;
 
 var launch;
-var song;
+var song,song1,song2,song3,song4,song5,song6;
 
 var stackA1 = [];
 var stackA2 = [];
@@ -37,7 +37,13 @@ function preload()
 {
   backgroundImg = loadImage("First_Order.png");
   
-  song = loadSound("Imperial_March.mp3")
+  song = loadSound("Music/Imperial_March.mp3")
+  song1 = loadSound("Music/Cyberpunk.mp3")
+  song2 = loadSound("Music/ping.mp3")
+  song3 = loadSound("Music/Gta San Andreas.mp3")
+  song4 = loadSound("Music/My Life Be Like.mp3")
+  song5 = loadSound("Music/T__g Life.mp3")
+  song6 = loadSound("Music/Tokio Drift.mp3")
 
   launch = loadSound("shooting.mp3");
 }
@@ -90,8 +96,22 @@ function setup() {
   strings = new Rope(stones.body,{x:150,y:500})
 
   Engine.run(engine);
-  
-  song.play();
+
+ if(score <100){
+    song.play();
+  }else if (score > 100 && score < 200){
+    song2.play();
+  }else if (score > 200 && score < 300){
+    song3.play();
+  }else if (score > 300 && score < 400){
+    song4.play();
+  }else if (score > 400 && score < 500){
+    song5.play();
+  }else if (score > 500 && score < 600){
+    song6.play();
+  }else{
+    song1.play();
+  }
 }
 
 
@@ -105,45 +125,45 @@ function draw() {
 
   for(var i=0; i<stackA1.length;i++){
     stackA1[i].display();
+    stackA1[i].score();
   }
 
   for(var i=0; i<stackA2.length;i++){
     stackA2[i].display();
+    stackA2[i].score();
+
   }
 
   for(var i=0; i<stackA3.length;i++){
     stackA3[i].display();
+    stackA3[i].score();
   }
 
   for(var i=0; i<stackA4.length;i++){
     stackA4[i].display();
+    stackA4[i].score();
   }
 
   platform2.display();
   for(var i=0; i<stackB1.length;i++){
     stackB1[i].display();
+    stackB1[i].score();
   }
 
   for(var i=0; i<stackB2.length;i++){
     stackB2[i].display();
+    stackB2[i].score();
   }
 
   for(var i=0; i<stackB3.length;i++){
     stackB3[i].display();
+    stackB3[i].score();
   }
 
   for(var i=0; i<stackB4.length;i++){
     stackB4[i].display();
+    stackB4[i].score();
   }
-
-stackA1.score();
-stackA2.score();
-stackA3.score();
-stackA4.score();
-stackB1.score();
-stackB2.score();
-stackB3.score();
-stackB4.score();
 
   stones.display();
 
